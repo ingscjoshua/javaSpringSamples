@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/xhtml/layout/loginLayout.xhtml">
+		<f:loadBundle basename="mensajes.mensajes" var="msg" />
+		<ui:define name="content">
+			<h:form id="loginForm" styleClass="center">
+				<p:growl id="mensajesLogin" showDetail="true" life="3000"/>
+				<p:panel header="#{msg.tLogin}">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="#{msg.usuarioLogin}" for="usuarioLogin"/>
+						<p:inputText id="usuarioLogin" value="#{loginMB.usuario}"/>
+						<p:outputLabel value="#{msg.passwordLogin}" for="passwordLogin"/>
+						<p:password id="passwordLogin" value="#{loginMB.password}"/>
+					</h:panelGrid>
+					<p:commandButton id="btnLogin" value="#{msg.btnLogin}"
+						action="#{loginMB.loginSubmit}" ajax="false"
+						update="mensajesLogin" />
+					<p:commandButton id="limpiar" value="Limpiar" type="reset"/>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

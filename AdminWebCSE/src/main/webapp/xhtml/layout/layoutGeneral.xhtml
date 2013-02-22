@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<title><ui:insert name="title">Consultores de Software Evolutivo</ui:insert></title>
+</h:head>
+<body>
+	<f:loadBundle basename="mensajes.mensajes" var="msg" />
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="135">
+			<ui:insert name="header">
+			
+				<p:graphicImage id="logo" value="resources/img/logo2.png" />
+				<div class="alienarTituloDer">
+					<p:outputLabel value="#{msg.perfil}" for="perfilSession" />
+					<p:outputLabel id="perfilSession"
+						value="#{homeMB.loginSession.loginSession.perfilTO.nombrePerfil}" />
+					<br />
+					<p:outputLabel value="#{msg.bienvenido}" for="usuarioSession" />
+					<p:outputLabel id="usuarioSession"
+						value="#{homeMB.loginSession.loginSession.usuarioTO.nomUsuario}" />
+				</div>
+			</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="300px;">
+		<ui:insert name="panelIzq">
+		</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<ui:insert name="content">
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="50">
+			<ui:insert name="footer">
+    		CopyRight 2013.
+		</ui:insert>
+		</p:layoutUnit>
+	</p:layout>
+</body>
+
+</html>
