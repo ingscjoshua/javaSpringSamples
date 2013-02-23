@@ -3,13 +3,18 @@ package mx.com.cse.Core.ServiciosImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.primefaces.component.menuitem.MenuItem;
+import org.primefaces.component.submenu.Submenu;
+import org.primefaces.model.DefaultMenuModel;
+import org.primefaces.model.MenuModel;
+import org.springframework.beans.BeanUtils;
 import mx.com.cse.Core.Servicios.UsuarioService;
 import mx.com.cse.DataAccess.DAO.LoginDAO;
+import mx.com.cse.DataAccess.DAO.MenuDAO;
 import mx.com.cse.DataAccess.DAO.UsuarioDAO;
 import mx.com.cse.DataAccess.Model.LoginEntity;
+import mx.com.cse.DataAccess.Model.MenuEntity;
 import mx.com.cse.DataAccess.Model.UsuarioEntity;
 import mx.com.cse.TO.LoginTO;
 import mx.com.cse.TO.PerfilTO;
@@ -22,10 +27,10 @@ import mx.com.cse.TO.UsuarioTO;
  * 12/02/2013
  */
 public class UsuarioServiceImpl implements UsuarioService {
-	
 	private UsuarioDAO usuarioDAO;
-	@Autowired
 	private LoginDAO loginDAO;
+	private MenuDAO menuDAO;
+	
 
 	public List<UsuarioTO> getAllUsuarios() {
 		List<UsuarioTO>listaUsuarios= new ArrayList<UsuarioTO>();
@@ -54,6 +59,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return loginTO;
 	}
 	
+	public MenuModel getMenuModel(Long idPerfil) {
+		MenuModel menu = new DefaultMenuModel();
+		List<MenuEntity>listaMenus=menuDAO.listaMenus(idPerfil);
+		if(!listaMenus.isEmpty()){
+			for (MenuEntity menuEntity : listaMenus) {
+				Submenu submenu = new Submenu();
+				submenu.setLabel(menuEntity.getNombreMenu());
+				MenuItem menuItem= new MenuItem();
+				menuItem.setValue(menuEntity.getNombreMenu());
+				menuItem.setTitle(menuEntity.getNombreMenu());
+				menuItem.setUrl(menuEntity.getAccionMenu());
+				submenu.getChildren().add(menuItem);
+				menu.addSubmenu(submenu);
+			}
+			
+		}
+		return menu;
+	}
+	
 	/**
 	 * @param usuarioDAO the usuarioDAO to set
 	 */
@@ -67,6 +91,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void setLoginDAO(LoginDAO loginDAO) {
 		this.loginDAO = loginDAO;
 	}
+	/**
+	 * @param menuDAO the menuDAO to set
+	 */
+	public void setMenuDAO(MenuDAO menuDAO) {
+		this.menuDAO = menuDAO;
+	}
+	
 
 
 	

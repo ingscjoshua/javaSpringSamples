@@ -1,8 +1,10 @@
 package mx.com.cse.DataAccess.Config;
 
 import mx.com.cse.DataAccess.DAO.LoginDAO;
+import mx.com.cse.DataAccess.DAO.MenuDAO;
 import mx.com.cse.DataAccess.DAO.UsuarioDAO;
 import mx.com.cse.DataAccess.DAOImpl.LoginDAOimpl;
+import mx.com.cse.DataAccess.DAOImpl.MenuDAOimpl;
 import mx.com.cse.DataAccess.DAOImpl.UsuarioDAOimpl;
 
 import org.hibernate.SessionFactory;
@@ -10,9 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author Josué Hernández Ramírez
@@ -50,5 +51,14 @@ public class DaoConfig {
 		LoginDAOimpl loginDAO= new LoginDAOimpl();
 		loginDAO.setSessionFactory(sessionFactory);
 		return loginDAO;
+	}
+	/**
+	 * Creacion del DAO para la carga del ménu
+	 */
+	@Bean
+	public MenuDAO menuDAO(){
+		MenuDAOimpl menuDAO= new MenuDAOimpl();
+		menuDAO.setSessionFactory(sessionFactory);
+		return menuDAO;
 	}
 }
