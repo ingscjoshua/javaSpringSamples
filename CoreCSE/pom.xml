@@ -14,20 +14,20 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 	</properties>
 	<dependencies>
-	<dependency>
-		<groupId>mx.com.cse.DataAccess</groupId>
-		<artifactId>DataAccessCSE</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-		<groupId>mx.com.cse.TO</groupId>
-		<artifactId>TOCSE</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-	<dependency>
+		<dependency>
+			<groupId>mx.com.cse.DataAccess</groupId>
+			<artifactId>DataAccessCSE</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.com.cse.TO</groupId>
+			<artifactId>TOCSE</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>2.1.17</version>
@@ -37,7 +37,12 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>2.1.17</version>
 		</dependency>
-	<dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>3.5</version>
