@@ -3,14 +3,12 @@ package mx.com.cse.web.MB;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import mx.com.cse.Core.ServiciosImpl.UsuarioServiceImpl;
 
 import org.primefaces.model.MenuModel;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 /**
  * @author Josué Hernández Ramírez
@@ -20,13 +18,11 @@ import org.springframework.stereotype.Controller;
  * Clase del home 
  */
 @ManagedBean(name="homeMB")
-@Component
-@Controller
-@Scope(value="session")
+@SessionScoped
 public class HomeMB implements Serializable{
-	@Inject
+	@ManagedProperty(value = "#{loginMB}")
 	private LoginMB loginSession;
-	@Inject
+	@ManagedProperty(value = "#{usuarioService}")
 	private UsuarioServiceImpl usuarioService;
 	private MenuModel menuModel;
 	
@@ -71,6 +67,20 @@ public class HomeMB implements Serializable{
 	 */
 	public void setMenuModel(MenuModel menuModel) {
 		this.menuModel = menuModel;
+	}
+
+	/**
+	 * @return the usuarioService
+	 */
+	public UsuarioServiceImpl getUsuarioService() {
+		return usuarioService;
+	}
+
+	/**
+	 * @param usuarioService the usuarioService to set
+	 */
+	public void setUsuarioService(UsuarioServiceImpl usuarioService) {
+		this.usuarioService = usuarioService;
 	}
 
 }

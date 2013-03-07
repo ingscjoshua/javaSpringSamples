@@ -4,13 +4,9 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-
 import mx.com.cse.Core.ServiciosImpl.UsuarioServiceImpl;
 import mx.com.cse.TO.LoginTO;
 
@@ -20,15 +16,13 @@ import mx.com.cse.TO.LoginTO;
  * @Email ventas@csofte.com 16/02/2013
  */
 @ManagedBean(name = "loginMB")
-@Component
-@Controller
-@Scope(value="session")
+@SessionScoped
 public class LoginMB implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Inject
+	@ManagedProperty(value = "#{usuarioService}")
 	private UsuarioServiceImpl usuarioService;
 	private LoginTO loginSession;
 	private String usuario;
@@ -105,6 +99,20 @@ public class LoginMB implements Serializable {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the usuarioService
+	 */
+	public UsuarioServiceImpl getUsuarioService() {
+		return usuarioService;
+	}
+
+	/**
+	 * @param usuarioService the usuarioService to set
+	 */
+	public void setUsuarioService(UsuarioServiceImpl usuarioService) {
+		this.usuarioService = usuarioService;
 	}
 
 }
