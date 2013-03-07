@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 /**
  * @author Josué Hernández Ramírez
@@ -18,7 +17,7 @@ import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
  * 06/02/2013
  */
 @Configuration
-@Import(DataSoruceLocal.class)
+@Import({DataSourceAppCfg.class,DataSoruceLocal.class})
 public class DataAccessCfg{
 	@Autowired
 	private DataSource dataSource;
