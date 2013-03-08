@@ -13,6 +13,8 @@ import org.primefaces.component.submenu.Submenu;
 import org.primefaces.model.DefaultMenuModel;
 import org.primefaces.model.MenuModel;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
 import mx.com.cse.Core.Servicios.UsuarioService;
 import mx.com.cse.DataAccess.DAO.LoginDAO;
 import mx.com.cse.DataAccess.DAO.MenuDAO;
@@ -29,6 +31,7 @@ import mx.com.cse.TO.UsuarioTO;
  * @Company Consultores de Software Evolutivo
  * @Email ventas@csofte.com 12/02/2013
  */
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioDAO usuarioDAO;
 	private LoginDAO loginDAO;

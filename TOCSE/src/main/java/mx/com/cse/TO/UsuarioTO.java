@@ -1,6 +1,7 @@
 package mx.com.cse.TO;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Josué Hernández Ramírez
@@ -14,6 +15,7 @@ public class UsuarioTO implements Serializable{
 	private Long idUsuario;
 	private String nomUsuario;
 	private String apellidoPatero;
+	private Date fechaCreacion;
 	/**
 	 * @return the idUsuario
 	 */
@@ -49,6 +51,18 @@ public class UsuarioTO implements Serializable{
 	 */
 	public void setApellidoPatero(String apellidoPatero) {
 		this.apellidoPatero = apellidoPatero;
+	}
+	/**
+	 * @return the fechaCreacion
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+	/**
+	 * @param fechaCreacion the fechaCreacion to set
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

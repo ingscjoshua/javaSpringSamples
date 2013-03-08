@@ -12,7 +12,19 @@
 <body>
 	<ui:composition template="/xhtml/layout/layoutGeneral.xhtml">
 		<ui:define name="content">
-		
+			<h:form id="frmUsuarios">
+				<p:panel header="Consulta Usuarios">
+					<h:panelGrid columns="2">
+						<h:outputLabel value="#{msg.nomUsuario}" for="nomUsuario"/>
+						<p:inputText id="nomUsuario" value="#{usuarioMB.usuarioTO.nomUsuario}"/>
+						<h:outputLabel value="#{msg.apUsuario}" for="apUsuario"/>
+						<p:inputText id="apUsuario" value="#{usuarioMB.usuarioTO.apellidoPatero}"/>
+						<h:outputLabel value="#{msg.fchCreacion}" for="fchCreacion" />
+						 <p:calendar value="#{usuarioMB.usuarioTO.fechaCreacion}" id="fchCreacion" showOn="button" />  
+					</h:panelGrid>
+					<p:commandButton value="#{msg.btnBuscar}" />
+				</p:panel>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </body>

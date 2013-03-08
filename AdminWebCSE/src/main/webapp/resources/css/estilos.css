@@ -19,13 +19,13 @@
 	.alienarTituloDer {
 		text-align: right;
 	}
-	.ui-widget-content  {
+	/*.ui-widget-content  {
 			margin: 0;
 		background: #383838;
 		width: 100%;
 		height:auto;
 		color: #FFF;
-	}
+	}*/
 	.ui-widget {
 		font-size: .75em;
 		font-family: segoe ui, Arial, sans-serif;

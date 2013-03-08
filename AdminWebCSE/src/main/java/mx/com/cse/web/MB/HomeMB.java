@@ -25,15 +25,6 @@ public class HomeMB implements Serializable{
 	@ManagedProperty(value = "#{usuarioService}")
 	private UsuarioServiceImpl usuarioService;
 	private MenuModel menuModel;
-	
-	
-	/**
-	 * Constructor de la clase
-	 */
-	public HomeMB() {
-		//menuModel=usuarioService.getMenuModel(loginSession.getLoginSession().getPerfilTO().getIdPerfil());
-	}
-
 	/**
 	 * 
 	 */

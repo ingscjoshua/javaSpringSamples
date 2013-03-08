@@ -2,11 +2,10 @@ package mx.com.cse.Core.Servicios;
 
 import java.util.List;
 
-import org.primefaces.model.MenuModel;
-import org.springframework.stereotype.Service;
-
 import mx.com.cse.TO.LoginTO;
 import mx.com.cse.TO.UsuarioTO;
+
+import org.primefaces.model.MenuModel;
 
 /**
  * @author Josué Hernández Ramírez
@@ -15,7 +14,7 @@ import mx.com.cse.TO.UsuarioTO;
  * 12/02/2013
  * 
  */
-@Service
+
 public interface UsuarioService {
 	/**
 	 * Metodo que carga el catalogo de usuarios.
