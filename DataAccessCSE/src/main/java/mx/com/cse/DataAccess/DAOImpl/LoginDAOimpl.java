@@ -1,5 +1,7 @@
 package mx.com.cse.DataAccess.DAOImpl;
 
+import java.io.Serializable;
+
 import mx.com.cse.DataAccess.DAO.LoginDAO;
 import mx.com.cse.DataAccess.Model.LoginEntity;
 
@@ -15,7 +17,11 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @Email ventas@csofte.com
  * 15/02/2013
  */
-public class LoginDAOimpl extends HibernateDaoSupport implements LoginDAO {
+public class LoginDAOimpl extends HibernateDaoSupport implements LoginDAO, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public LoginEntity getLogin(final String usuarioLogin) {
 		LoginEntity loginEntity=null;

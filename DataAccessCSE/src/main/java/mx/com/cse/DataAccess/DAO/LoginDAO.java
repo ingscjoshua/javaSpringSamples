@@ -1,5 +1,6 @@
 package mx.com.cse.DataAccess.DAO;
 
+
 import mx.com.cse.DataAccess.Model.LoginEntity;
 
 /**

@@ -15,15 +15,41 @@
 			<h:form id="frmUsuarios">
 				<p:panel header="Consulta Usuarios">
 					<h:panelGrid columns="2">
-						<h:outputLabel value="#{msg.nomUsuario}" for="nomUsuario"/>
-						<p:inputText id="nomUsuario" value="#{usuarioMB.usuarioTO.nomUsuario}"/>
-						<h:outputLabel value="#{msg.apUsuario}" for="apUsuario"/>
-						<p:inputText id="apUsuario" value="#{usuarioMB.usuarioTO.apellidoPatero}"/>
+						<h:outputLabel value="#{msg.nomUsuario}" for="nomUsuario" />
+						<p:inputText id="nomUsuario"
+							value="#{usuarioMB.usuarioTO.nomUsuario}" />
+						<h:outputLabel value="#{msg.apUsuario}" for="apUsuario" />
+						<p:inputText id="apUsuario"
+							value="#{usuarioMB.usuarioTO.apellidoPatero}" />
 						<h:outputLabel value="#{msg.fchCreacion}" for="fchCreacion" />
-						 <p:calendar value="#{usuarioMB.usuarioTO.fechaCreacion}" id="fchCreacion" showOn="button" />  
+						<p:calendar value="#{usuarioMB.usuarioTO.fechaCreacion}"
+							id="fchCreacion" showOn="button" />
 					</h:panelGrid>
-					<p:commandButton value="#{msg.btnBuscar}" />
+					<p:commandButton value="#{msg.btnBuscar}"
+						actionListener="#{usuarioMB.obtenerUsuariosPorFiltro}"
+						update="tblUsuarios" />
+					<p:spacer height="50px;" />
+					<p:commandButton value="#{msg.btnLimpiar}" type="reset" />
 				</p:panel>
+				<p:dataTable id="tblUsuarios"
+					var="usuarioTbl"
+					rendered="#{not empty usuarioMB.listUsuarios}" 
+					paginator="true"
+					rows="25" 
+					paginatorPosition="bottom">
+					<f:facet name="header">
+						<h:outputText value="#{msg.etqResultados}"/>
+					</f:facet>
+					<p:column headerText="#{msg.tUsuario}">
+						#{usuarioTbl.nomUsuario}
+					</p:column>
+					<p:column headerText="#{msg.tApellido}">
+						#{usuarioTbl.apellidoPatero}
+					</p:column>
+					<p:column headerText="#{msg.tFchCreacion}">
+						#{usuarioTbl.fechaCreacion}
+					</p:column>
+				</p:dataTable>
 			</h:form>
 		</ui:define>
 	</ui:composition>

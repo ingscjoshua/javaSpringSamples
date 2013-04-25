@@ -1,8 +1,8 @@
 package mx.com.cse.DataAccess.DAO;
-
 import java.util.List;
 
 import mx.com.cse.DataAccess.Model.UsuarioEntity;
+import mx.com.cse.TO.UsuarioTO;
 
 
 /**
@@ -19,10 +19,13 @@ public interface UsuarioDAO {
 	 * @return
 	 */
 	List<UsuarioEntity>getAllUsuarios();
+
+	
 	/**
-	 * Busca un usuario 
+	 * Metodo que obtiene una lista de usarios en base a el filtro especificacdo
+	 * @param usuarioEntity
 	 * @return
 	 */
-	UsuarioEntity buscaUsuario(String nomUsuario);
+	List<UsuarioEntity>usuariosByFilter( UsuarioTO usuario);
 
 }

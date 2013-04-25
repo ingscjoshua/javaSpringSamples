@@ -1,5 +1,6 @@
 package mx.com.cse.Core.Test;
 
+import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -35,5 +36,31 @@ public class UsuarioTest extends BaseTest{
 		LoginTO loginTO = new LoginTO();
 		loginTO=usuarioService.getLogin("ingscjoshua", "123");
 		TestCase.assertEquals("xl8", loginTO.getPasswordLogin());
+	}
+	@Test
+	public void testConsultaUsuariosPorNombre(){
+		UsuarioTO usuario= new UsuarioTO();
+		usuario.setNomUsuario("josue");
+		List<UsuarioTO>listaUsuarios=usuarioService.obtenerUsuarios(usuario);
+		TestCase.assertTrue(!listaUsuarios.isEmpty());
+		LOGGER.info(".::paso");
+	}
+	@Test
+	public void testConsultaUsuarioPorApellido(){
+		UsuarioTO usuario= new UsuarioTO();
+		usuario.setApellidoPatero("hernandez");
+		List<UsuarioTO>listaUsuarios=usuarioService.obtenerUsuarios(usuario);
+		TestCase.assertTrue(!listaUsuarios.isEmpty());
+		LOGGER.info(".::paso");
+	}
+	
+	@Test
+	public void testConsultaUsuarioPorFecha(){
+		UsuarioTO usuario= new UsuarioTO();
+		usuario.setFechaCreacion(new Date());
+		List<UsuarioTO>listaUsuarios=usuarioService.obtenerUsuarios(usuario);
+		TestCase.assertTrue(!listaUsuarios.isEmpty());
+		LOGGER.info(".::paso");
+		
 	}
 }

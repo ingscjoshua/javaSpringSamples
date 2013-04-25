@@ -15,7 +15,7 @@ import org.primefaces.model.MenuModel;
  * 
  */
 
-public interface UsuarioService {
+public interface UsuarioService{
 	/**
 	 * Metodo que carga el catalogo de usuarios.
 	 * @return
@@ -34,4 +34,10 @@ public interface UsuarioService {
 	 * @return
 	 */
 	MenuModel getMenuModel(final Long idPerfil);
+	/**
+	 * Método que obtiene los usuarios segun el filtro.
+	 * @param usuario
+	 * @return
+	 */
+	List<UsuarioTO> obtenerUsuarios(UsuarioTO usuario);
 }

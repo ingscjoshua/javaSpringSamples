@@ -11,7 +11,7 @@
 	<groupId>mx.com.cse.MB</groupId>
 	<artifactId>AdminWebCSE</artifactId>
 	<packaging>war</packaging>
-	<name>AdminWebCSE Maven Webapp</name>
+	<name>AdminWebCSE</name>
 	<url>http://maven.apache.org</url>
 	<pluginRepositories>
 		<pluginRepository>

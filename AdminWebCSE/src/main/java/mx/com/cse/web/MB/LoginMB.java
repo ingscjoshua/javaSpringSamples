@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import mx.com.cse.Core.Servicios.UsuarioService;
 import mx.com.cse.Core.ServiciosImpl.UsuarioServiceImpl;
 import mx.com.cse.TO.LoginTO;
 
@@ -23,7 +25,7 @@ public class LoginMB implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@ManagedProperty(value = "#{usuarioService}")
-	private UsuarioServiceImpl usuarioService;
+	private UsuarioService usuarioService;
 	private LoginTO loginSession;
 	private String usuario;
 	private String password;
@@ -104,14 +106,14 @@ public class LoginMB implements Serializable {
 	/**
 	 * @return the usuarioService
 	 */
-	public UsuarioServiceImpl getUsuarioService() {
+	public UsuarioService getUsuarioService() {
 		return usuarioService;
 	}
 
 	/**
 	 * @param usuarioService the usuarioService to set
 	 */
-	public void setUsuarioService(UsuarioServiceImpl usuarioService) {
+	public void setUsuarioService(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
 	}
 

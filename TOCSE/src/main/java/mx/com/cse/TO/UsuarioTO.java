@@ -16,6 +16,7 @@ public class UsuarioTO implements Serializable{
 	private String nomUsuario;
 	private String apellidoPatero;
 	private Date fechaCreacion;
+	private Date fecachaActualizacion;
 	/**
 	 * @return the idUsuario
 	 */
@@ -63,6 +64,18 @@ public class UsuarioTO implements Serializable{
 	 */
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+	/**
+	 * @return the fecachaActualizacion
+	 */
+	public Date getFecachaActualizacion() {
+		return fecachaActualizacion;
+	}
+	/**
+	 * @param fecachaActualizacion the fecachaActualizacion to set
+	 */
+	public void setFecachaActualizacion(Date fecachaActualizacion) {
+		this.fecachaActualizacion = fecachaActualizacion;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

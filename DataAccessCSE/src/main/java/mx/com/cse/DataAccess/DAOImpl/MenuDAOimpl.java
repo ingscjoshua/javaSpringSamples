@@ -1,5 +1,6 @@
 package mx.com.cse.DataAccess.DAOImpl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import mx.com.cse.DataAccess.DAO.MenuDAO;
@@ -17,7 +18,12 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * 22/02/2013
  * 
  */
-public class MenuDAOimpl extends HibernateDaoSupport implements MenuDAO{
+public class MenuDAOimpl extends HibernateDaoSupport implements MenuDAO, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Método que obtiene el resultado de los menus segun el perfil.
 	 */

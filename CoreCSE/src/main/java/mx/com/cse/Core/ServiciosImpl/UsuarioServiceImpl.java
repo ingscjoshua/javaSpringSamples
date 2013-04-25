@@ -1,19 +1,12 @@
 package mx.com.cse.Core.ServiciosImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.el.MethodExpression;
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
-
-import javax.el.MethodExpression;
-
-import org.primefaces.component.menuitem.MenuItem;
-import org.primefaces.component.submenu.Submenu;
-import org.primefaces.model.DefaultMenuModel;
-import org.primefaces.model.MenuModel;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
 
 import mx.com.cse.Core.Servicios.UsuarioService;
 import mx.com.cse.DataAccess.DAO.LoginDAO;
@@ -26,17 +19,31 @@ import mx.com.cse.TO.LoginTO;
 import mx.com.cse.TO.PerfilTO;
 import mx.com.cse.TO.UsuarioTO;
 
+import org.primefaces.component.menuitem.MenuItem;
+import org.primefaces.component.submenu.Submenu;
+import org.primefaces.model.DefaultMenuModel;
+import org.primefaces.model.MenuModel;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
 /**
  * @author Josué Hernández Ramírez
  * @Company Consultores de Software Evolutivo
  * @Email ventas@csofte.com 12/02/2013
  */
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UsuarioDAO usuarioDAO;
 	private LoginDAO loginDAO;
 	private MenuDAO menuDAO;
-
+	/*
+	 * (non-Javadoc)
+	 * @see mx.com.cse.Core.Servicios.UsuarioService#getAllUsuarios()
+	 */
 	public List<UsuarioTO> getAllUsuarios() {
 		List<UsuarioTO> listaUsuarios = new ArrayList<UsuarioTO>();
 		List<UsuarioEntity> listTempUsuarios = new ArrayList<UsuarioEntity>();
@@ -48,7 +55,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return listaUsuarios;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see mx.com.cse.Core.Servicios.UsuarioService#getLogin(java.lang.String, java.lang.String)
+	 */
 	public LoginTO getLogin(String usuario, String password) {
 		LoginTO loginTO = null;
 		LoginEntity loginEntity = loginDAO.getLogin(usuario);
@@ -64,7 +74,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return loginTO;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see mx.com.cse.Core.Servicios.UsuarioService#getMenuModel(java.lang.Long)
+	 */
 	public MenuModel getMenuModel(Long idPerfil) {
 		MenuModel menu = new DefaultMenuModel();
 		List<MenuEntity> listaMenus = menuDAO.listaMenus(idPerfil);
@@ -91,15 +104,30 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return menu;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see mx.com.cse.Core.Servicios.UsuarioService#obtenerUsuarios(mx.com.cse.TO.UsuarioTO)
+	 */
+	public List<UsuarioTO> obtenerUsuarios(UsuarioTO usuario) {
+		List<UsuarioEntity>listaUsuarios=usuarioDAO.usuariosByFilter(usuario);
+		List<UsuarioTO>listaUsuariosTO = new ArrayList<UsuarioTO>();
+		if(!listaUsuarios.isEmpty()){
+			for (UsuarioEntity usuarioEntityTemp : listaUsuarios) {
+				UsuarioTO usuarioTO = new UsuarioTO();
+				BeanUtils.copyProperties(usuarioEntityTemp, usuarioTO);
+				listaUsuariosTO.add(usuarioTO);
+			}
+		}	
+		return listaUsuariosTO;
+	}
+	
+	
 	/**
-	 * @param usuarioDAO
-	 *            the usuarioDAO to set
+	 * @param usuarioDAO the usuarioDAO to set
 	 */
 	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
-
 	/**
 	 * @param loginDAO
 	 *            the loginDAO to set
@@ -115,5 +143,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void setMenuDAO(MenuDAO menuDAO) {
 		this.menuDAO = menuDAO;
 	}
+
 
 }

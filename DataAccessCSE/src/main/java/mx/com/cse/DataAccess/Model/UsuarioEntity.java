@@ -1,6 +1,7 @@
 package mx.com.cse.DataAccess.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import org.hibernate.annotations.NamedQuery;
 @Table(name = "USUARIO")
 @NamedQueries({
 		@NamedQuery(name = "UsuarioEntity.getAllUsuarios", query = "FROM UsuarioEntity"),
-		@NamedQuery(name = "UsuarioEntity.getUsuario", query = "FROM UsuarioEntity u WHERE u.nomUsuario=:nomUsuario") })
+		@NamedQuery(name = "UsuarioEntity.getUsuario", query = "FROM UsuarioEntity u WHERE u.nomUsuario=:nomUsuario")})
 public class UsuarioEntity  implements Serializable{
 	/**
 	 * 
@@ -34,6 +35,10 @@ public class UsuarioEntity  implements Serializable{
 	private String nomUsuario;
 	@Column(name = "APELLIDO")
 	private String apellidoPatero;
+	@Column(name="FECHA_CREACION")
+	private Date fechaCreacion;
+	@Column(name="FECHA_ACTUALIZACION")
+	private Date fecachaActualizacion;
 	
 
 	/**
@@ -81,6 +86,34 @@ public class UsuarioEntity  implements Serializable{
 		this.idUsuario = idUsuario;
 	}
 
+	/**
+	 * @return the fechaCreacion
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	/**
+	 * @param fechaCreacion the fechaCreacion to set
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	/**
+	 * @return the fecachaActualizacion
+	 */
+	public Date getFecachaActualizacion() {
+		return fecachaActualizacion;
+	}
+
+	/**
+	 * @param fecachaActualizacion the fecachaActualizacion to set
+	 */
+	public void setFecachaActualizacion(Date fecachaActualizacion) {
+		this.fecachaActualizacion = fecachaActualizacion;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -121,7 +154,4 @@ public class UsuarioEntity  implements Serializable{
 		return "UsuarioEntity [idUsuario=" + idUsuario + ", nomUsuario="
 				+ nomUsuario + ", apellidoPatero=" + apellidoPatero + "]";
 	}
-
-
-
 }
